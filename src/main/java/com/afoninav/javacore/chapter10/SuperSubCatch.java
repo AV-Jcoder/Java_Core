@@ -9,7 +9,7 @@ public class SuperSubCatch {
             int a = 0;
             int b = 42 / a;
         } catch (ArithmeticException e) {
-            System.out.println("Этот код недостижим и считается ошибкой.");
+            System.out.println("Перехват арифметической ошибки.");
         } catch (Exception e) {
             System.out.println("Перехват исключения общего класса Exception.");
         }
