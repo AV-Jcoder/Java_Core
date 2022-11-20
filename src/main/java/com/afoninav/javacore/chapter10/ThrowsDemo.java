@@ -9,7 +9,7 @@ package com.afoninav.javacore.chapter10;
 public class ThrowsDemo {
     static void throwOne() {
         System.out.println("Внутри тела метода throwOne().");
-        throw new IllegalAccessException("Demonstration");
+//        throw new IllegalAccessException("Demonstration");
     }
 
     public static void main(String[] args) {
