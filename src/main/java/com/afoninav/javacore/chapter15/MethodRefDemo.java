@@ -9,7 +9,7 @@ public class MethodRefDemo {
     // в этом методе функциональный интерфейс указывается в качестве
     // типа первого его параметра. Следовательно методу может быть передан
     // любой экземпляр этого интерфейса, включая и ссылку на метод
-    static String stringOP(StringFunc sf, String s) {
+    static String stringOP(StringFunc3 sf, String s) {
         return sf.func(s);
     }
 
@@ -38,7 +38,7 @@ class MyStringOps {
 
 // Функциональный интерфейс для операции с симовлольными строками
 @FunctionalInterface
-interface StrungFunc {
-    String func();
+interface StringFunc3 {
+    String func(String s);
 }
 
