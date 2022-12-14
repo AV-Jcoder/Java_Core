@@ -4,6 +4,16 @@ import java.io.CharArrayReader;
 import java.io.IOException;
 import java.io.PushbackReader;
 
+/**
+ * Пример использования класса PushbackReader.
+ * У этого класса есть внутренний буфер и при вызове
+ * метода unread() данные сохраняются в него.
+ * при следующем вызове метода read() данные в первую
+ * очередь будут взяты из буфера, как будто бы
+ * заново прочитаны из потока.
+ *
+ */
+
 public class PushbackReaderDemo {
     public static void main(String[] args) {
         String s = "if (a == 4) a = 0;\n";
