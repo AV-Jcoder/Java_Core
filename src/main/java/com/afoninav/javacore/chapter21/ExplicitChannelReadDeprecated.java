@@ -25,8 +25,8 @@ public class ExplicitChannelReadDeprecated {
         } catch (IOException e) {
             System.out.println("Cant create file: " + e);
         }
-        FileInputStream fin;
-        FileChannel fch;
+        FileInputStream fin = null;
+        FileChannel fch = null;
         ByteBuffer byteBuffer;
 
         try {
@@ -61,6 +61,21 @@ public class ExplicitChannelReadDeprecated {
             System.out.println("File not found: " + e);
         } catch (IOException e) {
             System.out.println("IO exception: " + e);
+        } finally {
+            try {
+                if (fch != null) {
+                    fch.close();
+                }
+            } catch (IOException e) {
+                System.out.println("IO exception on close: " + e);
+            }
+            try {
+                if (fin != null) {
+                    fin.close();
+                }
+            } catch (IOException e) {
+                System.out.println("IO exception on close: " + e);
+            }
         }
     }
 }
