@@ -1,5 +1,7 @@
 package com.afoninav.javacore.chapter29;
 
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -44,6 +46,35 @@ public class StreamDemo7 {
         // Вывести на экран коллекцию
         System.out.println("\nИмена и номера телефонов в коллекции типа Set:");
         for (NamePhone2 obj : set) {
+            System.out.println(obj.name + ", " + obj.phone);
+        }
+
+        /*
+        Использование перегруженного метода collect:
+
+        <R> R collect(Supplier<R> supplier,
+                  BiConsumer<R, ? super T> accumulator,
+                  BiConsumer<R, R> combiner);
+         */
+
+        // Получаем новый стрим и создаём из него коллекцию типа List
+        stream = supplier.get().map((var) -> new NamePhone2(var.name, var.phone));
+        List<NamePhone2> list2 = stream.collect(() -> new LinkedList<>(),
+                                                (a,b) -> a.add(b),
+                                                (a,b) -> a.addAll(b));
+        System.out.println("\nСписок объектов полученный через перегруженный метод collect():");
+        for (NamePhone2 obj : list2) {
+            System.out.println(obj.name + ", " + obj.phone);
+        }
+
+        // Получаем новый стрим и создаём из него коллекцию типа Set
+        stream = supplier.get().map(var -> new NamePhone2(var.name, var.phone));
+        Set<NamePhone2> set2 = stream.collect(  HashSet::new,
+                                                HashSet::add,
+                                                HashSet::addAll);
+        System.out.println("\nКоллекция типа Set полученная через перегруженный метод collect():");
+        for (NamePhone2 obj :
+                set2) {
             System.out.println(obj.name + ", " + obj.phone);
         }
     }
