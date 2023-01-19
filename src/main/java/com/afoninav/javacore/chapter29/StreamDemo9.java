@@ -29,5 +29,14 @@ public class StreamDemo9 {
 
         // Перебрать элементы в потоке данных
         while (spliterator.tryAdvance(System.out::println));
+
+        // Если нужно произвести действие над всеми элементами сразу, а
+        // не над каждым в порядке очереди, то нужно использовать метод -
+        // default void forEachRemaining(Consumer<? super T> action)
+
+        System.out.println("\nИспользование метода forEachRemaining()");
+        stream = list.stream();
+        spliterator = stream.spliterator();
+        spliterator.forEachRemaining(System.out::println);
     }
 }
