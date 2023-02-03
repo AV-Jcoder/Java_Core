@@ -25,12 +25,12 @@ class Q {
 
     // Начать с недоступного семафора потребителя
     // разврешение на считывание даётся в методе put()
-    static Semaphore semCon = new Semaphore(0);
-    static Semaphore semProd = new Semaphore(1);
+    Semaphore semCon = new Semaphore(0);
+    Semaphore semProd = new Semaphore(1);
 
     int get() {
         try {
-            this.semCon.acquire(1);
+            semCon.acquire(1);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -41,13 +41,13 @@ class Q {
 
     void put(int n) {
         try {
-            this.semProd.acquire(1);
+            semProd.acquire(1);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         System.out.println("Отправлено: " + n);
         this.n = n;
-        this.semCon.release(1);
+        semCon.release(1);
     }
 }
 
