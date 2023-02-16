@@ -74,7 +74,7 @@ abstract class Decorator implements Task {
 class TaskDiagramDecorator extends Decorator {
     @Override
     public void display() {
-        decorateTask.display();
+        super.display();
         // Рисуем диаграмму
         System.out.println("Временная диаграмма: ");
         int time = decorateTask.getTime();
@@ -104,7 +104,7 @@ class ResponsibilityStaffDecorator extends Decorator {
 
     @Override
     public void display() {
-        decorateTask.display();
+        super.display();
         System.out.println("Ответственный за выполнение: " + this.name);
     }
 }
